@@ -7,6 +7,11 @@ const connect = function() {
   });
 
   conn.setEncoding('utf8');
+  conn.on('connect', function() {
+    console.log('Connection established')
+    conn.write('Name: JTH')
+  })
+  
   conn.on('data', function(data) {
     console.log('Message from server: ', data)
   });
