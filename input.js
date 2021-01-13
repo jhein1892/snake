@@ -3,15 +3,15 @@ const setupInput = function(){
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
   stdin.resume();
-  handleUserInput('data ');
+  stdin.on('data', handleUserInput);
   return stdin;
 }
 
-const handleUserInput = function(data){
-  if ('data' === '\u0003'){
+const handleUserInput = function(key){
+  if (key === '\u0003' || key === 'x'){
     process.exit();      
   }
 }
 
 
-module.exports = setupInput
+module.exports = setupInput;
